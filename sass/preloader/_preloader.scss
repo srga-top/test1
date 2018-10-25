@@ -1,0 +1,35 @@
+#preloader {
+  display: block;
+  position: fixed;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  z-index: 2000;
+  .counter {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 0;
+    right: 10%;
+    width: 100px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 30px;
+    color: #fff;
+    z-index: 100;
+    -webkit-transform: translateY(-30px);
+        -ms-transform: translateY(-30px);
+            transform: translateY(-30px);
+    &:after {
+      content:"";
+      position: absolute;
+      bottom: -30px;
+      right: 50px;
+      height: 100%;
+      width: 1px;
+      background: #fff;
+    }
+  }
+}

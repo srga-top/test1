@@ -1,0 +1,235 @@
+@mixin media-es {
+  @media only screen and (max-width: $size-es) {
+    @content;
+  }
+}
+@mixin media-sm {
+  @media only screen and (min-width: $size-sm) {
+    @content;
+  }
+}
+@mixin media-md {
+  @media only screen and (min-width: $size-md) {
+    @content;
+  }
+}
+@mixin media-lg {
+  @media only screen and (min-width: $size-lg) {
+    @content;
+  }
+}
+
+@-webkit-keyframes anim__page-header {
+    0% { width: 0px; }
+    50% { width: 0px; }
+    100% { width: 100%; }
+}
+
+@keyframes anim__page-header {
+    0% { width: 0px; }
+    50% { width: 0px; }
+    100% { width: 100%; }
+}
+
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get( $columns, $numberColumns ) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+}
+
+/* @include transition (all, .3s, ease-out); */
+@mixin transition($what: all, $time: 0.3s, $how: ease-in-out) {
+    -webkit-transition: $what $time $how;
+    -o-transition:      $what $time $how;
+    transition:         $what $time $how;
+}
+
+@mixin textlink() {
+  color: $color__link;
+  text-decoration: none;
+  width: calc(100%);
+  background-image: -webkit-linear-gradient(transparent calc(100% - 2px), $color__link 2px);
+  background-image: -o-linear-gradient(transparent calc(100% - 2px), $color__link 2px);
+  background-image: linear-gradient(transparent calc(100% - 2px), $color__link 2px);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  -webkit-transition: background-size 1s;
+  -o-transition: background-size 1s;
+  transition: background-size 1s;
+  &:hover {
+    color: $color__link-hover;
+    background-size: 100% 100%;
+  }
+}
+
+@mixin hover-bordered($hb_width: 5px, $hb_color: $color__link, $hb_time: .25s) {
+  position: relative;
+  text-decoration: none;
+  &:hover {
+    color: $color__link-hover;
+  }
+  &:before {
+    content:"";
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: $hb_width solid transparent;
+    border-right: $hb_width solid transparent;
+    -webkit-transition:
+      height $hb_time linear ($hb_time * 2),
+      width $hb_time linear ($hb_time * 3),
+      border-color 0.01s linear ($hb_time * 4);
+    -o-transition:
+      height $hb_time linear ($hb_time * 2),
+      width $hb_time linear ($hb_time * 3),
+      border-color 0.01s linear ($hb_time * 4);
+    transition:
+      height $hb_time linear ($hb_time * 2),
+      width $hb_time linear ($hb_time * 3),
+      border-color 0.01s linear ($hb_time * 4);
+  }
+  &:after {
+      content:"";
+      -webkit-box-sizing: inherit;
+              box-sizing: inherit;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-bottom: $hb_width solid transparent;
+      border-left: $hb_width solid transparent;
+      -webkit-transition:
+        height $hb_time linear,
+        width $hb_time linear $hb_time,
+        border-color 0.01s linear ($hb_time * 2);
+      -o-transition:
+        height $hb_time linear,
+        width $hb_time linear $hb_time,
+        border-color 0.01s linear ($hb_time * 2);
+      transition:
+        height $hb_time linear,
+        width $hb_time linear $hb_time,
+        border-color 0.01s linear ($hb_time * 2);
+  }
+  &:hover:before {
+      border-top-color: $hb_color;
+      border-right-color: $hb_color;
+      width: 100%;
+      height: 100%;
+      -webkit-transition:
+        width $hb_time linear,
+        height $hb_time linear $hb_time;
+      -o-transition:
+        width $hb_time linear,
+        height $hb_time linear $hb_time;
+      transition:
+        width $hb_time linear,
+        height $hb_time linear $hb_time;
+    }
+  &:hover:after {
+      border-bottom-color: $hb_color;
+      border-left-color: $hb_color;
+      width: 100%;
+      height: 100%;
+      -webkit-transition: border-color .01s ease-out ($hb_time * 2),
+        width $hb_time ease-out ($hb_time * 2),
+        height $hb_time ease-out ($hb_time * 3);
+      -o-transition: border-color .01s ease-out ($hb_time * 2),
+        width $hb_time ease-out ($hb_time * 2),
+        height $hb_time ease-out ($hb_time * 3);
+      transition: border-color .01s ease-out ($hb_time * 2),
+        width $hb_time ease-out ($hb_time * 2),
+        height $hb_time ease-out ($hb_time * 3);
+    }
+}
+
+@mixin mix-right-line() {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0 1rem 0 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: $color__btn-text;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 2rem;
+    height: 2px;
+    background: $color__btn-text;
+    @include transition();
+  }
+  &:hover{
+    color: $color__link-hover;
+    &:after {
+      width: 4rem;
+      background: $color__link-hover;
+    }
+  }
+}
+
+@mixin mix-left-line() {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0 0 0 60px;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: $color__btn-text;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background: $color__btn-text;
+    @include transition();
+  }
+  &:hover{
+    color: $color__link-hover;
+    &:after {
+      -webkit-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+      background: $color__link-hover;
+    }
+  }
+}

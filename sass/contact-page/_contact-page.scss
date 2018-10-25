@@ -1,0 +1,41 @@
+.contact-grid {
+  display: block !important;
+  text-align: center;
+  overflow: hidden;
+  color: $color__black;
+  letter-spacing: 1px;
+
+  .panel-grid-cell {
+    padding: 10px !important;
+    margin: 0;
+    width: 100% !important;
+    -webkit-box-flex: 0 !important;
+    -webkit-flex: none !important;
+        -ms-flex: none !important;
+            flex: none !important;
+    text-align: center;
+    @include media-sm {
+      width: 33% !important;
+      float: left;
+    }
+
+    .sow-icon {
+      margin: 0 auto;
+      span {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        border: 1px solid $color__link;
+        border-radius: 50%;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: $color__black;
+      &:hover {
+        color: $color__link-hover;
+      }
+    }
+  }
+}

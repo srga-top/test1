@@ -1,0 +1,117 @@
+p {
+	margin-bottom: 1.5em;
+}
+
+h4 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+dfn, cite, em, i {
+	font-style: italic;
+}
+
+article ul {
+  margin: 20px;
+  padding: 0;
+  text-align: justify;
+  @include media-md {
+    margin: 20px 0 20px 200px;
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 10px 30px;
+    font-size: .675rem;
+    line-height: 1.4rem;
+    &:before {
+      content: '';
+      position: absolute;
+      top: .7rem;
+      left: 0;
+      width: 20px;
+      height: 4px;
+      margin: -2px 0 0 0;
+      padding: 0;
+      background: $color__black;
+      opacity: .3;
+      @include transition();
+    }
+    &:hover:before {
+      background: $color__link;
+      opacity: 1;
+    }
+  }
+}
+
+blockquote {
+  margin: 0;
+  @include media-md {
+    margin: 0 0 20px 200px;
+  }
+  text-align: justify;
+}
+blockquote {
+        position: relative;
+        &:after,
+        &:before {
+          content:"";
+          position: absolute;
+          top: 20px;
+          left: -200px;
+          width: 40px;
+          height: 1px;
+          background:$color__link;
+          -webkit-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+                  transform: rotate(45deg);
+          @include transition();
+        }
+        &:before {
+          left: -180px;
+        }
+        &:hover {
+          &:after,
+          &:before {
+            -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+          }
+        }
+      }
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	background: $color__background-pre;
+	font-family: $font__pre;
+	@include font-size(0.9375);
+	line-height: $font__line-height-pre;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code, kbd, tt, var {
+	font-family: $font__code;
+	@include font-size(0.9375);
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted $color__border-abbr;
+	cursor: help;
+}
+
+mark, ins {
+	background: $color__background-ins;
+	text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}

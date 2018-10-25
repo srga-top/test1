@@ -1,0 +1,24 @@
+.page:not(.home) {
+  article.page {
+    display: block;
+    font-size: .825rem;
+    padding: $padding__small;
+    @include media-md {
+      padding: ($padding__big / 2) $padding__big;
+    }
+
+    .entry-title {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      padding: 10px 20px 10px 0;
+      color: $color__black;
+      line-height: 20px;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 1.125rem;
+      border-right: 1px solid $color__black;
+    }
+
+  }
+}

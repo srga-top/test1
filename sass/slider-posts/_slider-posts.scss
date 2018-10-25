@@ -1,0 +1,181 @@
+.slider-posts {
+  position: relative;
+  .post {
+    margin: 0;
+    padding: $padding__small $padding__small $padding__small ($padding__big);
+    @include media-md {
+      padding: $padding__big;
+    };
+    .post__left {
+      display: block;
+      float: none;
+      @include media-md {
+        width: 50%;
+        float: left;
+      }
+      &:after {
+        content:"00";
+        position: absolute;
+        top: 0;
+        right: 55%;
+        font-size: 14rem;
+        font-weight: 700;
+        z-index: -1;
+        opacity:.05;
+      }
+    }
+    .post__header {
+      margin: 0;
+      padding: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      a {
+        @include textlink();
+      }
+    }
+    .post__header-title {
+      margin: 0 0 1rem 0;
+      padding: 0;
+      font-size: 1rem;
+      @include media-md {
+        font-size: 1.4rem;
+      };
+    }
+    .post__year,
+    .post__object,
+    .post__location {
+      opacity: .5;
+    }
+    .post__readmore {
+      margin: 0;
+      padding: $padding__small 0 ($padding__big / 2) 0;
+      @include media-md {
+        padding: $padding__big 0;
+      }
+      a {
+        @include mix-left-line();
+        font-size: 1rem;
+      }
+    }
+    .post__category {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      -webkit-transform-origin: left top;
+          -ms-transform-origin: left top;
+              transform-origin: left top;
+      -webkit-transform: rotate(-90deg);
+          -ms-transform: rotate(-90deg);
+              transform: rotate(-90deg);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.2rem;
+      @include media-md {
+        font-size: 2rem;
+      };
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+      opacity: 0.2;
+    }
+    .post__right {
+      position: relative;
+      display: block;
+      float: none;
+      @include media-md {
+        width: 50%;
+        float: right;
+      }
+      opacity: 0;
+      -webkit-transform: translateX(100%);
+          -ms-transform: translateX(100%);
+              transform: translateX(100%);
+      -webkit-transition-delay: .5s;
+           -o-transition-delay: .5s;
+              transition-delay: .5s;
+      @include transition(all, .5s, linear);
+    }
+    .post__img {
+      position: relative;
+      //z-index: 2;
+    }
+    .post__img-parallax {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: none;
+      border: 10px solid $color__red;
+      opacity: .2;
+      -webkit-transform: translateX(-20px) translateY(-20px);
+          -ms-transform: translateX(-20px) translateY(-20px);
+              transform: translateX(-20px) translateY(-20px);
+      //z-index: 1;
+    }
+  }
+  .post.slick-active {
+    .post__right {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+          -ms-transform: translateX(0);
+              transform: translateX(0);
+    }
+  }
+  .post:nth-child(1) .post__left:after { content:"01"; }
+  .post:nth-child(2) .post__left:after { content:"02"; }
+  .post:nth-child(3) .post__left:after { content:"03"; }
+  .post:nth-child(4) .post__left:after { content:"04"; }
+  .post:nth-child(5) .post__left:after { content:"05"; }
+}
+
+.slick-dots {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  @include media-md {
+    position: absolute;
+    bottom: $padding__big;
+    left: $padding__big;
+  };
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    &:before {
+      display: none;
+    }
+    button {
+      font-size: 1rem;
+      margin: 0;
+      padding: .5rem;
+      background: none;
+      border: none;
+      font-weight: 700;
+      text-decoration: underline;
+      opacity: .4;
+      cursor: pointer;
+      &:before {
+        content: '0';
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  li + li {
+    margin-left: 1rem;
+  }
+  li.slick-active {
+    button {
+      color: $color__link;
+      text-decoration: none;
+    }
+  }
+}

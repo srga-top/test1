@@ -1,0 +1,9 @@
+.inputs__file {
+  border: .5rem dashed lightgray;
+  border-radius: 4px;
+  background: transparent;
+}
+.inputs__file--hover {
+  border: .5rem dashed darkgray;
+  background: lightgray;
+}
